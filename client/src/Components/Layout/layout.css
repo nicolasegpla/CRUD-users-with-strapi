@@ -6,12 +6,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: aqua;
 }
 
 @media (width >= 600px) {
     .layout{
         padding: 1.5rem;
-        background-color: red;
     }
 }
