@@ -66,6 +66,7 @@ function useDoLogin() {
         userLogin,
         modalLogin,
         setModalLogin,
+        navigate,
     }
 }
 

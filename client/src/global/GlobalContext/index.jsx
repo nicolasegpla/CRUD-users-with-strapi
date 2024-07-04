@@ -7,11 +7,21 @@ const GlobalContext = React.createContext();
 function GlobalProvider({children}) {  
     
 
-    const { doLogin, handlerUserLogin, userLogin, modalLogin, setModalLogin} = useDoLogin()
+    const { doLogin, handlerUserLogin, userLogin, modalLogin, setModalLogin, navigate} = useDoLogin()
 
     function closeModalErrorLogin () {
         setModalLogin(false)
     }
+
+    function navigateToCreateAccount() {
+        navigate('/create-an-account')
+    }
+
+    function navigateToLogin() {
+        navigate('/login')
+    }
+
+
 
 
     return(
@@ -22,6 +32,8 @@ function GlobalProvider({children}) {
             modalLogin,
             setModalLogin,
             closeModalErrorLogin,
+            navigateToCreateAccount,
+            navigateToLogin,
         }}>
             {children}
         </GlobalContext.Provider>

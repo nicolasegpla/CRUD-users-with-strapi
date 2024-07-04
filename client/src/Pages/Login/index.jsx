@@ -8,7 +8,7 @@ import './login.css'
 
 function Login() {
     
-    const { doLogin, handlerUserLogin, userLogin, modalLogin } = useContext(GlobalContext)
+    const { doLogin, handlerUserLogin, userLogin, modalLogin,  navigateToCreateAccount } = useContext(GlobalContext)
 
 
     
@@ -48,7 +48,7 @@ function Login() {
                         <p className="login-container-form__p">Forgot Password?</p>
                         <button onClick={doLogin} className="login-container-form__input--button" type="button">Log in</button>
                     </form>
-                    <p className="login-container__p">Dont have an account? <span className="login-container__p__span">Create acount</span>
+                    <p className="login-container__p">Dont have an account? <span onClick={ navigateToCreateAccount } className="login-container__p__span">Create acount</span>
                     </p>
                 </div>
                 <ModalLogin>
