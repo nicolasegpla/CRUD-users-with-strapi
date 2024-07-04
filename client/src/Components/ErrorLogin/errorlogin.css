@@ -1,0 +1,39 @@
+.errorLogin--container {
+    width: 18.75rem;
+    height: 16.5625rem;
+    margin: 0 auto;
+    margin-top: 190px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: .75rem;
+    background-color: #ffffff;
+    border-radius: .625rem;
+    font-family: "Inter", sans-serif;
+
+    & .errorLogin--container__span {
+        margin-top: .75rem;
+        font-size: 1.25rem;
+        font-weight: 500;
+    }
+
+    & .errorLogin--container__p {
+        font-size: .875rem;
+        line-height: 150%;
+        font-weight: 300;
+    }
+
+    & .errorLogin--container__button {
+        width: 13.5625rem;
+        height: 3.125rem;
+        margin-top: .75rem;
+        background-color: #000000;
+        color: #ffffff;
+        border: none;
+        font-size: .875rem;
+        font-weight: 400;
+    }
+}

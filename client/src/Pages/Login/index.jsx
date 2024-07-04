@@ -1,8 +1,18 @@
+import { useContext } from "react"
+import { GlobalContext } from "../../global/GlobalContext"
 import Layout from "../../Components/Layout"
+import { ModalLogin } from "../../Components/ModalLogin"
+import ErrorLogin from "../../Components/ErrorLogin"
 import './login.css'
 
 
 function Login() {
+    
+    const { doLogin, handlerUserLogin, userLogin, modalLogin } = useContext(GlobalContext)
+
+
+    
+
     return(
         <>
             <Layout>
@@ -13,14 +23,37 @@ function Login() {
                         <p className="login-container-div__p">Please sign into your account</p>
                     </div>
                     <form action="" className="login-container-form">
-                        <input className="login-container-form__input--email" type='text' placeholder="Email" />
-                        <input className="login-container-form__input--password" type='password' placeholder="Password"/>
+                        <input 
+                            onChange={handlerUserLogin} 
+                            className="login-container-form__input--email" 
+                            placeholder="Username"
+                            value={userLogin.identifier}
+                            id="identifier"
+                            name="identifier"
+                            type="identifier"
+                            autoComplete="identifier"
+                            required
+                        />
+                        <input 
+                            onChange={handlerUserLogin} 
+                            className="login-container-form__input--password" 
+                            placeholder="Password"  
+                            value={userLogin.password}
+                            id="password"
+                            name="password"
+                            type="password"
+                            autoComplete="current-password"
+                            required
+                        />
                         <p className="login-container-form__p">Forgot Password?</p>
-                        <input className="login-container-form__input--button" type='button' value='Log in'/>
+                        <button onClick={doLogin} className="login-container-form__input--button" type="button">Log in</button>
                     </form>
-                    <p className="login-container__p">Don’t have an account? <span className="login-container__p__span">Create acount</span>
+                    <p className="login-container__p">Dont have an account? <span className="login-container__p__span">Create acount</span>
                     </p>
                 </div>
+                <ModalLogin>
+                    {modalLogin && <ErrorLogin/>}
+                </ModalLogin>
             </Layout>
         </>
     )

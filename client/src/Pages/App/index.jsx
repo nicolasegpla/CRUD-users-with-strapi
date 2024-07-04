@@ -1,10 +1,15 @@
+
 import { useRoutes, BrowserRouter } from 'react-router-dom'
+import { GlobalProvider } from '../../global/GlobalContext'
 import Login from '../Login'
 import CreateAnAccount from '../CreateAnAccount'
 import NewPassword from '../NewPassword'
 import PasswordRecovery from '../PasswordRecovery'
 import NotFound from '../NotFound'
+import Dashboard from '../Dashboard'
 import './App.css'
+
+
 
 const AppRoutes = () => {
   let routes = useRoutes([
@@ -13,6 +18,7 @@ const AppRoutes = () => {
     { path: '/create-an-account', element: <CreateAnAccount /> },
     { path: '/new-password', element: <NewPassword /> },
     { path: '/password-recovery', element: <PasswordRecovery /> },
+    { path: '/dashboard', element: <Dashboard />}, 
     { path: '/*', element: <NotFound /> }
   ])
 
@@ -25,7 +31,10 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <AppRoutes />
+        <GlobalProvider>
+          <AppRoutes />
+          
+        </GlobalProvider>
       </BrowserRouter>
     </>
   )
