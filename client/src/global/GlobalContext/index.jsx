@@ -11,7 +11,7 @@ function GlobalProvider({children}) {
     
 
     const { doLogin, handlerUserLogin, userLogin, modalLogin, setModalLogin, navigate} = useDoLogin()
-    const { handlerRegisterUser, handlerGetDataForm, user, setStateAccount, stateAccount } = usePostRegisterUser()
+    const { handlerRegisterUser, handlerGetDataForm, user, setStateAccount, stateAccount, stateError, setStateError } = usePostRegisterUser()
 
     function closeModalErrorLogin () {
         setModalLogin(false)
@@ -28,6 +28,11 @@ function GlobalProvider({children}) {
     function continueCheckAccount() {
         setStateAccount(false)
         navigate('/login')
+    }
+
+    function ErrorTryAgain() {
+        setStateError(false)
+        navigate('/create-an-account')
     }
 
     useEffect(() => {
@@ -55,6 +60,8 @@ function GlobalProvider({children}) {
             user,
             stateAccount,
             continueCheckAccount,
+            stateError,
+            ErrorTryAgain,
         }}>
             {children}
         </GlobalContext.Provider>

@@ -8,6 +8,7 @@ function usePostRegisterUser() {
     const initialUser = {username: "", email: "", country: "", password: ""}
     const [user, setUser] = useState(initialUser)
     const [stateAccount, setStateAccount] = useState(false)
+    const [stateError, setStateError] = useState(false)
 
     
     function handlerRegisterUser(e) {
@@ -24,11 +25,11 @@ function usePostRegisterUser() {
             .then((res) => res.json())
             .then((res) => {
                 if(res.user.confirmed) {
-                    setStateAccount(true)
+                    setStateAccount(true);
                 }
             });
         }else {
-            console.error('Error to create an a count')
+            setStateError(true);
         }
 
         console.log(user)
@@ -56,6 +57,8 @@ function usePostRegisterUser() {
         user,
         setStateAccount,
         stateAccount,
+        stateError,
+        setStateError,
     }
 }
 
