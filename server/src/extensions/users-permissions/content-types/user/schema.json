@@ -65,9 +65,8 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "Country": {
-      "type": "customField",
-      "customField": "plugin::country-select.country"
+    "country": {
+      "type": "string"
     }
   }
 }

@@ -1,0 +1,106 @@
+
+.create-account--container {
+    max-width: 600px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & .create-account--container__h1 {
+        font-size: 1.5rem;
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        letter-spacing: .25rem;
+        color:#000000;
+    }
+
+    & .create-account--container__div {
+        width: auto;
+        height: auto;
+        margin-top: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        text-align: center;
+        gap: .75rem;
+        font-family: "Inter", sans-serif;
+        color: #000000;
+
+        & .create-account--container__div__span {
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+
+        & .create-account--container__div__p {
+            font-size: 1rem;
+            font-weight: 200;
+            line-height: 150%;
+        }
+    }
+    & .create-account--container__form {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-end;
+        gap: .75rem;
+
+        & .create-account--container__form__input-name,
+        .create-account--container__form__input-email, 
+        .create-account--container__form__input-phone,
+        .create-account--container__form__input-country,
+        .create-account--container__form__input-password {
+            width: 18.75rem;
+            height: 3.125rem;
+            padding-left: 1rem;
+            border: 1px solid #000000;
+            font-family: "Inter", sans-serif;
+            font-size: .875rem;
+            font-weight: 300;
+            color: #606060;
+        }
+
+        
+
+        & .create-account--container__form__button {
+            width: 18.75rem;
+            height: 3.125rem;
+            margin-top: .75rem;
+            font-family: "Inter", sans-serif;
+            font-size: .875rem;
+            font-weight: 500;
+            border: none;
+            color: #ffffff;
+            background-color: #000000;
+        }
+    }
+
+    & .create-account--container__div-link {
+        width: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: .25rem;
+        margin-top: 1.5rem;
+        font-family: "Inter", sans-serif;
+        font-size: .875rem;
+        font-weight: 300;
+
+        & .create-account--container__div-link__icon {
+            width: 1.5rem;
+        }
+
+        & .create-account--container__div-link__p {
+            font-family: "Inter", sans-serif;
+            font-size: .875rem;
+            font-weight: 300;
+        }
+
+        & .create-account--container__div-link__span {
+            font-weight: 500;
+            text-decoration: underline;
+            text-underline-offset: .25rem;
+        }
+    }
+}

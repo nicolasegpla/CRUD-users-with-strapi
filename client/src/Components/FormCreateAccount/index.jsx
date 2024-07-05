@@ -1,11 +1,11 @@
-import { ChevronLeftIcon } from '@heroicons/react/24/outline'
-import './style.css'
 import { useContext } from 'react'
 import { GlobalContext } from '../../global/GlobalContext'
+import { ChevronLeftIcon } from '@heroicons/react/24/outline'
+import './style.css'
 
 function FormCreateAccount() {
 
-    const { navigateToLogin } = useContext(GlobalContext)
+    const { navigateToLogin, countries, handlerRegisterUser, handlerGetDataForm, user } = useContext(GlobalContext)
 
     return(
         <>
@@ -17,31 +17,62 @@ function FormCreateAccount() {
                 </div>
                 <form className='create-account--container__form' action="">
                     <input
+                        onChange={handlerGetDataForm}
                         className='create-account--container__form__input-name' 
-                        type="text" 
-                        placeholder="Name" 
+                        placeholder="Name"
+                        id="username"
+                        name="username"
+                        type="username"
+                        autoComplete="username"
+                        value={user.username} 
+                        required
                     />
+                    {
+                        <input
+                            onChange={handlerGetDataForm}
+                            className='create-account--container__form__input-email' 
+                            placeholder="Email" 
+                            id="email"
+                            name="email"
+                            type="email"
+                            autoComplete="email"
+                            value={user.email} 
+                            required
+                        />
+                    }
+                    <select className='create-account--container__form__input-country'
+                    onChange={handlerGetDataForm} 
+                    id="country"
+                    name="country"
+                    type="country"
+                    autoComplete="country"
+                    required 
+                    value={user.country} 
+                    >
+                        <option defaultValue>Select country</option>
+                        {
+                            countries.data? countries.data.map((country) => (
+                                <option 
+                                     
+                                    key={country.id}
+                                >{country.attributes.Country}</option>
+                            )) : null
+                        }
+                        
+                    </select>
+                    
                     <input
-                        className='create-account--container__form__input-email' 
-                        type="text" 
-                        placeholder="Email" 
-                    />
-                    <input
-                        className='create-account--container__form__input-phone' 
-                        type="text" 
-                        placeholder="Phone" 
-                    />
-                    <input
-                        className='create-account--container__form__input-country' 
-                        type="text" 
-                        placeholder="Country" 
-                    />
-                    <input
+                        onChange={handlerGetDataForm}
                         className='create-account--container__form__input-password' 
-                        type="text" 
                         placeholder="Password" 
+                        id="password"
+                        name="password"
+                        type="password"
+                        autoComplete="password"
+                        value={user.password} 
+                        required
                     />
-                    <button className='create-account--container__form__button'>Create Account</button>
+                    <button onClick={handlerRegisterUser} className='create-account--container__form__button'>Create Account</button>
                 </form>
                 <div onClick={navigateToLogin} className='create-account--container__div-link'>
                     <ChevronLeftIcon className='create-account--container__div-link__icon' />
