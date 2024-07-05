@@ -11,7 +11,7 @@ function GlobalProvider({children}) {
     
 
     const { doLogin, handlerUserLogin, userLogin, modalLogin, setModalLogin, navigate} = useDoLogin()
-    const { handlerRegisterUser, handlerGetDataForm, user } = usePostRegisterUser()
+    const { handlerRegisterUser, handlerGetDataForm, user, setStateAccount, stateAccount } = usePostRegisterUser()
 
     function closeModalErrorLogin () {
         setModalLogin(false)
@@ -22,6 +22,11 @@ function GlobalProvider({children}) {
     }
 
     function navigateToLogin() {
+        navigate('/login')
+    }
+
+    function continueCheckAccount() {
+        setStateAccount(false)
         navigate('/login')
     }
 
@@ -47,7 +52,9 @@ function GlobalProvider({children}) {
             countries,
             handlerRegisterUser,
             handlerGetDataForm,
-                user,
+            user,
+            stateAccount,
+            continueCheckAccount,
         }}>
             {children}
         </GlobalContext.Provider>

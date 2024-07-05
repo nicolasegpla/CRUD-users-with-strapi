@@ -1,19 +1,15 @@
 import { useState } from "react"
 import { URLBASE } from "./helpers"
-import { emailValidation } from "./helpers"
-import { useNavigate } from "react-router-dom"
 
 function usePostRegisterUser() {
 
     const URL = `${URLBASE}auth/local/register`
-    const navigate = useNavigate()
 
     const initialUser = {username: "", email: "", country: "", password: ""}
     const [user, setUser] = useState(initialUser)
+    const [stateAccount, setStateAccount] = useState(false)
 
     
-    console.log(user.email == emailValidation)
-
     function handlerRegisterUser(e) {
         e.preventDefault()
 
@@ -26,7 +22,11 @@ function usePostRegisterUser() {
                 },
             })
             .then((res) => res.json())
-            .then((res) => (console.log("Success", res.user.confirmed), navigate("/login")));
+            .then((res) => {
+                if(res.user.confirmed) {
+                    setStateAccount(true)
+                }
+            });
         }else {
             console.error('Error to create an a count')
         }
@@ -50,15 +50,12 @@ function usePostRegisterUser() {
             
         })
     }
-
-
-
-    
-
     return {
         handlerRegisterUser,
         handlerGetDataForm,
         user,
+        setStateAccount,
+        stateAccount,
     }
 }
 
