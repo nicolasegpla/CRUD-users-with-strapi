@@ -6,9 +6,10 @@ import ErrorLogin from "../../Components/ErrorLogin"
 import './login.css'
 
 
+
 function Login() {
     
-    const { doLogin, handlerUserLogin, userLogin, modalLogin,  navigateToCreateAccount } = useContext(GlobalContext)
+    const { doLogin, handlerUserLogin, userLogin, modalLogin,  navigateToCreateAccount, navigateToRecoveryPassword } = useContext(GlobalContext)
 
 
     
@@ -45,7 +46,7 @@ function Login() {
                             autoComplete="current-password"
                             required
                         />
-                        <p className="login-container-form__p">Forgot Password?</p>
+                        <p onClick={navigateToRecoveryPassword} className="login-container-form__p">Forgot Password?</p>
                         <button onClick={doLogin} className="login-container-form__input--button" type="button">Log in</button>
                     </form>
                     <p className="login-container__p">Dont have an account? <span onClick={ navigateToCreateAccount } className="login-container__p__span">Create acount</span>

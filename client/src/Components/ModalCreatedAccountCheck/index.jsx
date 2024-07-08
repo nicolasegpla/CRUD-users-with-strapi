@@ -1,7 +1,7 @@
-import { CheckBadgeIcon } from "@heroicons/react/24/outline"
-import './style.css'
 import { useContext } from "react"
 import { GlobalContext } from "../../global/GlobalContext"
+import { CheckBadgeIcon } from "@heroicons/react/24/outline"
+import './style.css'
 
 function ModalCreatedAccountCheck() {
 

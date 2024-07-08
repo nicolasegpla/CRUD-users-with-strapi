@@ -18,7 +18,6 @@ function ModalErrorCreatedAccount() {
                 <p className='div-container-error__p'>Error creating account: error description.</p>
                 <button className='div-container-error__button' onClick={ErrorTryAgain}>Try again</button>
             </div>
-            
         </>
     )
 }
