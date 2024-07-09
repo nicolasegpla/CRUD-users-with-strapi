@@ -15,7 +15,7 @@ function GlobalProvider({children}) {
 
     const { doLogin, handlerUserLogin, userLogin, modalLogin, setModalLogin, navigate} = useDoLogin()
     const { handlerRegisterUser, handlerGetDataForm, user, setStateAccount, stateAccount, stateError, setStateError } = usePostRegisterUser()
-    const { handlerFormForgotPassword, email, recoveryPasswordEmail, emailModal, setEmailModal, emailErrorInput, setEmailErrorInput } = useRecoveryPassword()
+    const { handlerFormForgotPassword, email, recoveryPasswordEmail, emailModal, setEmailModal, emailErrorInput, setEmailErrorInput, validateEmail } = useRecoveryPassword()
 
     function closeModalErrorLogin () {
         setModalLogin(false)
@@ -85,6 +85,7 @@ function GlobalProvider({children}) {
             emailModal,
             emailErrorInput,
             tryAgainEmailForgotPassword,
+            validateEmail,
         }}>
             {children}
         </GlobalContext.Provider>

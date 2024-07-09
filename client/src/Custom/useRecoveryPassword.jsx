@@ -12,6 +12,7 @@ function useRecoveryPassword() {
     const [ emailModal, setEmailModal ] = useState(false)
     const [ emailUser, setEmailUser ] = useState([])
     const [ emailErrorInput, setEmailErrorInput] = useState(false)
+    const [ validateEmail, setValidateEmail ] = useState(false)
 
 
     const arrayEmailUser = []
@@ -64,7 +65,12 @@ function useRecoveryPassword() {
         
 
     function handlerFormForgotPassword({target}) {
+        const validador = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/
         const {name, value} = target
+        
+        {
+            validador.test(value) ? setValidateEmail(false) : setValidateEmail(true)
+        }
         
         setEmail({
             ...email,
@@ -81,6 +87,7 @@ function useRecoveryPassword() {
         setEmailModal,
         emailErrorInput,
         setEmailErrorInput,
+        validateEmail,
     }
 }
 

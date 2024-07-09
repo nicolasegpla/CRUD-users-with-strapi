@@ -6,7 +6,7 @@ import "./style.css"
 
 function FormForgottenPassword() {
 
-    const { navigateToLogin, handlerFormForgotPassword, recoveryPasswordEmail, email } = useContext(GlobalContext)
+    const { navigateToLogin, handlerFormForgotPassword, recoveryPasswordEmail, email, validateEmail } = useContext(GlobalContext)
 
     
 
@@ -20,6 +20,7 @@ function FormForgottenPassword() {
                 </div>
                 <form className="div-container-fp__form" action="">
                     <input onChange={handlerFormForgotPassword} className="div-container-fp__form__input" name='email' type="email" placeholder="Email" value={email.email} />
+                    <span className='div-container-fp__form__span'  style={{display: validateEmail ? 'block': 'none'}}>*Enter a valid email</span>
                     <button onClick={recoveryPasswordEmail} className="div-container-fp__form__button" type='button'>send</button>
                 </form>
                 <div onClick={navigateToLogin} className="div-container-fp__div-back-login">
