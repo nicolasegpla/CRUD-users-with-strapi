@@ -15,7 +15,7 @@ function FormForgottenPassword() {
             <div className="div-container-fp">
                 <h1 className="div-container-fp__h1">PATRON</h1>
                 <div className="div-container-fp__div-header">
-                    <span className="div-container-fp__div-header__span">Password reovery</span>
+                    <span className="div-container-fp__div-header__span">Password recovery</span>
                     <p className="div-container-fp__div-header__p">Enter your email to which we will send a link to reset your password.</p>
                 </div>
                 <form className="div-container-fp__form" action="">

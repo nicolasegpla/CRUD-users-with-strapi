@@ -1,12 +1,6 @@
 import { fn } from "@storybook/test";
 import ModalEmailSendForgotPassword from "./index";
 
-
-
-
-
-
-
 export const ActionsData = {
     navigateToLogin: fn()
   };

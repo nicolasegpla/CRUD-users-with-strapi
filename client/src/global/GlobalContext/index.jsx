@@ -11,10 +11,11 @@ function GlobalProvider({children}) {
 
     const [countries, setCountries] = useState([])
     
+    
 
     const { doLogin, handlerUserLogin, userLogin, modalLogin, setModalLogin, navigate} = useDoLogin()
     const { handlerRegisterUser, handlerGetDataForm, user, setStateAccount, stateAccount, stateError, setStateError } = usePostRegisterUser()
-    const { handlerFormForgotPassword, email, recoveryPasswordEmail, emailModal, setEmailModal, } = useRecoveryPassword()
+    const { handlerFormForgotPassword, email, recoveryPasswordEmail, emailModal, setEmailModal, emailErrorInput, setEmailErrorInput } = useRecoveryPassword()
 
     function closeModalErrorLogin () {
         setModalLogin(false)
@@ -46,14 +47,17 @@ function GlobalProvider({children}) {
         navigate('/login')
     }
 
+    function tryAgainEmailForgotPassword() {
+        setEmailErrorInput(false)
+    }
+
     useEffect(() => {
         fetch('http://localhost:1337/api/countries')
           .then((res) => res.json())
           .then((data) => {setCountries(data)})
       },[]) 
 
-
-
+      
 
     return(
         <GlobalContext.Provider value={{
@@ -79,6 +83,8 @@ function GlobalProvider({children}) {
             recoveryPasswordEmail,
             emailSendContinue,
             emailModal,
+            emailErrorInput,
+            tryAgainEmailForgotPassword,
         }}>
             {children}
         </GlobalContext.Provider>

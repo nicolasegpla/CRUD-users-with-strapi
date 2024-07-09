@@ -2,6 +2,7 @@ import { CheckBadgeIcon } from "@heroicons/react/24/outline"
 import './style.css'
 
 
+// eslint-disable-next-line react/prop-types
 function ModalEmailSendForgotPassword({label, backgroundColor, fnButton}) {
 
     
