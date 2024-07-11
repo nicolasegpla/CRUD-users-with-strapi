@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDoLogin } from "../../Custom/useDoLogin"
 import { usePostRegisterUser } from "../../Custom/usePostRegisterUser";
 import { useRecoveryPassword } from "../../Custom/useRecoveryPassword";
+import { useNewPassword } from "../../Custom/useNewPassword";
 
 
 const GlobalContext = React.createContext();
@@ -16,6 +17,7 @@ function GlobalProvider({children}) {
     const { doLogin, handlerUserLogin, userLogin, modalLogin, setModalLogin, navigate} = useDoLogin()
     const { handlerRegisterUser, handlerGetDataForm, user, setStateAccount, stateAccount, stateError, setStateError } = usePostRegisterUser()
     const { handlerFormForgotPassword, email, recoveryPasswordEmail, emailModal, setEmailModal, emailErrorInput, setEmailErrorInput, validateEmail } = useRecoveryPassword()
+    const { seePassword, setSeePassword,  handlerSeePassword, seePasswordConfirm, handlerSeePasswordConfirm, handlerNewPassword, handlerNewPasswordConfirm, validatorNewPassword, validatorConfirm } = useNewPassword()
 
     function closeModalErrorLogin () {
         setModalLogin(false)
@@ -86,6 +88,15 @@ function GlobalProvider({children}) {
             emailErrorInput,
             tryAgainEmailForgotPassword,
             validateEmail,
+            seePassword,
+            setSeePassword,
+            handlerSeePassword,
+            seePasswordConfirm,
+            handlerSeePasswordConfirm,
+            handlerNewPassword,
+            handlerNewPasswordConfirm,
+            validatorNewPassword,
+            validatorConfirm,
         }}>
             {children}
         </GlobalContext.Provider>
