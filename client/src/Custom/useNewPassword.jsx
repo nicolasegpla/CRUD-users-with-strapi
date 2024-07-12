@@ -12,6 +12,8 @@ function useNewPassword() {
     const [ seePasswordConfirm, setSeePasswordConfirm ] = useState(false)
     const [ newPassword, setNewPassword ] = useState(initialStateNewPassword)
     const [ validatorConfirm, setValidatorConfirm ] = useState(false)
+    const [ modalConfirm, setModalConfirm ] = useState(false)
+    const [ modalErrorNewPassword, setModalErrorNewPassword ] = useState(false)
 
     function handlerSeePassword() {
         setSeePassword(state => !state)
@@ -58,24 +60,39 @@ function useNewPassword() {
 
         if(newPassword.password === newPassword.passwordConfirmation) {
 
-            fetch(url, {
-                method: 'POST',
-                body: JSON.stringify(newPassword),
-                headers: {
-                     "Content-Type": "application/json"
-                }
-            })
-            .then(res => res.json())
-            .then(data => console.log(data))
-            .catch(error => console.log(`este es el error ${error}`))
-        }else {
+            if(!newPassword.password == '') {
+                fetch(url, {
+                    method: 'POST',
+                    body: JSON.stringify(newPassword),
+                    headers: {
+                         "Content-Type": "application/json"
+                    }
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    setModalConfirm(true)
+                })
+                .catch(error => {
+                    console.log(`este es el error ${error}`)
+                    setModalErrorNewPassword(true)
+                    console.log('la cagamos')
+                    setNewPassword({
+                        code: '', password: '', passwordConfirmation: '',
+                    })
+                })
+
+            }else {
+                console.log('meta una clave')
+                setValidatorConfirm(true)
+            }
+        }
+        else {
             console.log('la clave no coinside')
             setValidatorConfirm(true)
         }
     }
 
-    
-    
 
     return{
         seePassword,
@@ -88,6 +105,10 @@ function useNewPassword() {
         handlerNewPasswordConfirm,
         validatorNewPassword,
         validatorConfirm,
+        modalConfirm,
+        modalErrorNewPassword,
+        setModalErrorNewPassword,
+        newPassword,
     }
 }
 

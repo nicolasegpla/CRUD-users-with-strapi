@@ -6,7 +6,7 @@ import { ExclamationCircleIcon } from '@heroicons/react/24/outline'
 import './newPasswordForm.css'
 
 
-function NewPasswordform({h1, spanh, ph, buttont, pl, spanl, statePassword, statePasswordConfirm, changeTypePassword, changeTypePasswordConfirm, handlerNewP, handlerNewPc, validatorNewPassword, validatorConfirm, navigateToLogin  }) {
+function NewPasswordform({h1, spanh, ph, buttont, pl, spanl, statePassword, statePasswordConfirm, changeTypePassword, changeTypePasswordConfirm, handlerNewP, handlerNewPc, validatorNewPassword, validatorConfirm, navigateToLogin, value, valueConfirm }) {
 
    
     return(
@@ -30,7 +30,9 @@ function NewPasswordform({h1, spanh, ph, buttont, pl, spanl, statePassword, stat
                             type={`${statePassword ? 'text' : 'password'}`} 
                             placeholder='New password' 
                             name="password" 
-                            id="password" 
+                            id="password"
+                            value={value}
+                            required
                         />
                     </label>
                     <label className='new-password-container__form__label' htmlFor="\">
@@ -47,6 +49,8 @@ function NewPasswordform({h1, spanh, ph, buttont, pl, spanl, statePassword, stat
                             placeholder='Confirm new password' 
                             name="passwordConfirmation" 
                             id="passwordConfirmation" 
+                            value={valueConfirm}
+                            required
                         />
                     </label>
                     {

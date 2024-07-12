@@ -17,7 +17,7 @@ function GlobalProvider({children}) {
     const { doLogin, handlerUserLogin, userLogin, modalLogin, setModalLogin, navigate} = useDoLogin()
     const { handlerRegisterUser, handlerGetDataForm, user, setStateAccount, stateAccount, stateError, setStateError } = usePostRegisterUser()
     const { handlerFormForgotPassword, email, recoveryPasswordEmail, emailModal, setEmailModal, emailErrorInput, setEmailErrorInput, validateEmail } = useRecoveryPassword()
-    const { seePassword, setSeePassword,  handlerSeePassword, seePasswordConfirm, handlerSeePasswordConfirm, handlerNewPassword, handlerNewPasswordConfirm, validatorNewPassword, validatorConfirm } = useNewPassword()
+    const { seePassword, setSeePassword,  handlerSeePassword, seePasswordConfirm, handlerSeePasswordConfirm, handlerNewPassword, handlerNewPasswordConfirm, validatorNewPassword, validatorConfirm, modalConfirm,  modalErrorNewPassword, setModalErrorNewPassword, newPassword } = useNewPassword()
 
     function closeModalErrorLogin () {
         setModalLogin(false)
@@ -51,6 +51,10 @@ function GlobalProvider({children}) {
 
     function tryAgainEmailForgotPassword() {
         setEmailErrorInput(false)
+    }
+
+    function tryAgainChangeNewPassword() {
+        setModalErrorNewPassword(false)
     }
 
     useEffect(() => {
@@ -97,6 +101,10 @@ function GlobalProvider({children}) {
             handlerNewPasswordConfirm,
             validatorNewPassword,
             validatorConfirm,
+            modalConfirm,
+            modalErrorNewPassword,
+            tryAgainChangeNewPassword,
+            newPassword
         }}>
             {children}
         </GlobalContext.Provider>

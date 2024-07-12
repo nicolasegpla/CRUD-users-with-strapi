@@ -1,4 +1,4 @@
-.modalAlerts-div {
+.modalConfirm-div {
     width: 18.75rem;
     height: auto;
     margin: 0 auto;
@@ -15,19 +15,19 @@
     font-family: "Inter", sans-serif;
     
 
-    & .modalAlerts-div__span {
+    & .modalConfirm-div__span {
         margin-top: .75rem;
         font-size: 1.25rem;
         font-weight: 500;
     }
 
-    & .modalAlerts-div__p {
+    & .modalConfirm-div__p {
         font-size: .875rem;
         line-height: 150%;
         font-weight: 300;
     }
 
-    & .modalAlerts-div__button {
+    & .modalConfirm-div__button {
         width: 13.5625rem;
         height: 3.125rem;
         margin-top: .75rem;
@@ -39,7 +39,6 @@
     }
 }
 
-.icon-modalAlerts {
+.icon-modalConfirm {
     width: 2.25rem;
-    color: red;
 }
