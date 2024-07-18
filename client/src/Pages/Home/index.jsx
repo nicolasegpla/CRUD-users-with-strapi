@@ -3,9 +3,15 @@ import { useLocalStorage } from "../../Custom/useLocalStorage"
 import Layout from "../../Components/Layout"
 import Dashboard from "../Dashboard"
 import './home.css'
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
+import { Modal } from "../../Components/Modal"
+import { GlobalContext } from "../../global/GlobalContext"
+import  UpDatePasswordCom  from '../../Components/UpDatePassword'
+
 
 function Home() {
+
+    const { upDatePassword } = useContext(GlobalContext)
 
 
     const jwt = useLocalStorage()
@@ -24,6 +30,10 @@ function Home() {
             {
                 jwt.jwt ? <Dashboard /> : null
             }
+            <Modal>
+                {upDatePassword && <UpDatePasswordCom />}
+            </Modal>
+            
             
         </Layout>
         </>

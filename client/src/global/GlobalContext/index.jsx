@@ -11,6 +11,9 @@ const GlobalContext = React.createContext();
 function GlobalProvider({children}) {  
 
     const [countries, setCountries] = useState([])
+    const [ boxIsOpen, setBoxIsOpen ] = useState(false)
+    const [ upDatePassword, setUpDatePassword ] = useState(false)
+   
     
     
     
@@ -64,6 +67,17 @@ function GlobalProvider({children}) {
         localStorage.removeItem('userSesion')
         navigate('/login')
     }
+
+    function openBoxAccount() {
+        setBoxIsOpen(state => !state)
+    }
+    function upDatePasswordModal() {
+        setUpDatePassword(true)
+        setBoxIsOpen(false)
+    }
+
+    
+
  
 
     useEffect(() => {
@@ -114,7 +128,12 @@ function GlobalProvider({children}) {
             modalErrorNewPassword,
             tryAgainChangeNewPassword,
             newPassword,
-            logOut
+            logOut,
+            boxIsOpen,
+            openBoxAccount,
+            upDatePasswordModal,
+            upDatePassword,
+            setUpDatePassword,
         }}>
             {children}
         </GlobalContext.Provider>
