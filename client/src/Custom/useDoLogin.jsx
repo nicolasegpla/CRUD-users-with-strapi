@@ -31,7 +31,7 @@ function useDoLogin() {
         .then((data) => {
             if(data.jwt) {
                 saveUserSesion(data);
-                navigate("/dashboard")
+                navigate("/home")
             }else {
                 setModalLogin(true)
                 

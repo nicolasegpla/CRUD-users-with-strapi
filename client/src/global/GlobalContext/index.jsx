@@ -11,6 +11,7 @@ const GlobalContext = React.createContext();
 function GlobalProvider({children}) {  
 
     const [countries, setCountries] = useState([])
+    const [ sesionLog, setSesionLog ] = useState(false)
     
     
 
@@ -19,6 +20,8 @@ function GlobalProvider({children}) {
     const { handlerFormForgotPassword, email, recoveryPasswordEmail, emailModal, setEmailModal, emailErrorInput, setEmailErrorInput, validateEmail } = useRecoveryPassword()
     const { seePassword, setSeePassword,  handlerSeePassword, seePasswordConfirm, handlerSeePasswordConfirm, handlerNewPassword, handlerNewPasswordConfirm, validatorNewPassword, validatorConfirm, modalConfirm,  modalErrorNewPassword, setModalErrorNewPassword, newPassword } = useNewPassword()
 
+   
+    
     function closeModalErrorLogin () {
         setModalLogin(false)
     }

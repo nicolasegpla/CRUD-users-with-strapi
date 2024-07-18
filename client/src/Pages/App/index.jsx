@@ -6,7 +6,7 @@ import CreateAnAccount from '../CreateAnAccount'
 import NewPassword from '../NewPassword'
 import PasswordRecovery from '../PasswordRecovery'
 import NotFound from '../NotFound'
-import Dashboard from '../Dashboard'
+import Home from '../Home'
 import './App.css'
 
 
@@ -18,7 +18,7 @@ const AppRoutes = () => {
     { path: '/create-an-account', element: <CreateAnAccount /> },
     { path: '/new-password', element: <NewPassword /> },
     { path: '/password-recovery', element: <PasswordRecovery /> },
-    { path: '/dashboard', element: <Dashboard />}, 
+    { path: '/home', element: <Home />}, 
     { path: '/*', element: <NotFound /> }
   ])
 
