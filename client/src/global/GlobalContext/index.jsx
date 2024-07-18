@@ -11,7 +11,7 @@ const GlobalContext = React.createContext();
 function GlobalProvider({children}) {  
 
     const [countries, setCountries] = useState([])
-    const [ sesionLog, setSesionLog ] = useState(false)
+    
     
     
 
@@ -60,6 +60,12 @@ function GlobalProvider({children}) {
         setModalErrorNewPassword(false)
     }
 
+    function logOut() {
+        localStorage.removeItem('userSesion')
+        navigate('/login')
+    }
+ 
+
     useEffect(() => {
         fetch('http://localhost:1337/api/countries')
           .then((res) => res.json())
@@ -107,7 +113,8 @@ function GlobalProvider({children}) {
             modalConfirm,
             modalErrorNewPassword,
             tryAgainChangeNewPassword,
-            newPassword
+            newPassword,
+            logOut
         }}>
             {children}
         </GlobalContext.Provider>

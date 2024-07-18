@@ -1,10 +1,13 @@
 import { Bars3Icon } from "@heroicons/react/24/outline"
 import perfil from '../../assets/perfil.jpg'
 import './nav.css'
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { GlobalContext } from "../../global/GlobalContext"
 
 
 function Nav() {
+
+    const { logOut } = useContext(GlobalContext)
 
     const [ boxIsOpen, setBoxIsOpen ] = useState(false)
 
@@ -25,7 +28,7 @@ function Nav() {
                         <ul className="nav__div__div-box__ul">
                             <li>My account</li>
                             <li>Change Password</li>
-                            <li>Logout</li>
+                            <li onClick={logOut}>Logout</li>
                             <li>Delete account</li>
                         </ul>
                     </div>

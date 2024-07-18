@@ -12,13 +12,9 @@ function Home() {
     
     const navigate = useNavigate()
 
-    console.log(jwt.jwt)
-
     useEffect(() => {
         if(jwt.jwt == undefined) {
             navigate('/login')
-        }else {
-            console.log('dasboard')
         }
         
     }, [])

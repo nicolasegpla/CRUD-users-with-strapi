@@ -42,11 +42,8 @@ function useNewPassword() {
     }
     useEffect(() => {
         const valores = window.location.search;
-        console.log(valores)
         const urlParams = new URLSearchParams(valores);
         let code = urlParams.get('code');
-
-        console.log(code)
 
         setNewPassword({
             ...newPassword,
