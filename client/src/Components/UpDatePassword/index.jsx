@@ -6,7 +6,7 @@ import { GlobalContext } from '../../global/GlobalContext'
 
 function UpDatePasswordCom() {
 
-    const { setUpDatePassword } = useContext(GlobalContext)
+    const { setUpDatePassword, upDateChangePassword, handlerChangePassword, changePasswordUpDate } = useContext(GlobalContext)
 
     function closeModal() {
         setUpDatePassword(false)
@@ -22,7 +22,8 @@ function UpDatePasswordCom() {
                 </div>
                 <form className='create-account--container__form' action="">
                     <input
-                        
+                        onChange={handlerChangePassword}
+                        value={upDateChangePassword.currentPassword}
                         className='create-account--container__form__input-name' 
                         placeholder="Current password"
                         id="currentPassword"
@@ -33,7 +34,8 @@ function UpDatePasswordCom() {
                     />
                     
                     <input
-                        
+                        onChange={handlerChangePassword}
+                        value={upDateChangePassword.password}
                         className='create-account--container__form__input-email' 
                         placeholder="New password" 
                         id="password"
@@ -44,7 +46,8 @@ function UpDatePasswordCom() {
                     />
                     
                     <input
-                        
+                        onChange={handlerChangePassword}
+                        value={upDateChangePassword.passwordConfirmation}
                         className='create-account--container__form__input-password' 
                         placeholder="New password confirmation" 
                         id="passwordConfirmation"
@@ -53,7 +56,7 @@ function UpDatePasswordCom() {
                         autoComplete="passwordConfirmation" 
                         required
                     />
-                    <button className='create-account--container__form__button'>Change Password</button>
+                    <button type='button' onClick={changePasswordUpDate} className='create-account--container__form__button'>Change Password</button>
                 </form>
                 <div onClick={closeModal} className='div-icon'>
                     <XMarkIcon className='div-icon__icon' />

@@ -3,6 +3,7 @@ import { useDoLogin } from "../../Custom/useDoLogin"
 import { usePostRegisterUser } from "../../Custom/usePostRegisterUser";
 import { useRecoveryPassword } from "../../Custom/useRecoveryPassword";
 import { useNewPassword } from "../../Custom/useNewPassword";
+import { useUpDateChangePassword } from "../../Custom/useUpDateChangePassword";
 
 
 const GlobalContext = React.createContext();
@@ -10,9 +11,12 @@ const GlobalContext = React.createContext();
 // eslint-disable-next-line react/prop-types
 function GlobalProvider({children}) {  
 
+    
+
     const [countries, setCountries] = useState([])
     const [ boxIsOpen, setBoxIsOpen ] = useState(false)
-    const [ upDatePassword, setUpDatePassword ] = useState(false)
+    
+    
    
     
     
@@ -22,7 +26,7 @@ function GlobalProvider({children}) {
     const { handlerRegisterUser, handlerGetDataForm, user, setStateAccount, stateAccount, stateError, setStateError } = usePostRegisterUser()
     const { handlerFormForgotPassword, email, recoveryPasswordEmail, emailModal, setEmailModal, emailErrorInput, setEmailErrorInput, validateEmail } = useRecoveryPassword()
     const { seePassword, setSeePassword,  handlerSeePassword, seePasswordConfirm, handlerSeePasswordConfirm, handlerNewPassword, handlerNewPasswordConfirm, validatorNewPassword, validatorConfirm, modalConfirm,  modalErrorNewPassword, setModalErrorNewPassword, newPassword } = useNewPassword()
-
+    const {  upDateChangePassword, handlerChangePassword, changePasswordUpDate, upDatePassword, setUpDatePassword,  changePassword, closeChangePasswordConfirm, changePasswordError, closeChangePasswordTryAgain, changePasswordErrorServer, setChangePasswordErrorServer } = useUpDateChangePassword()
    
     
     function closeModalErrorLogin () {
@@ -65,6 +69,7 @@ function GlobalProvider({children}) {
 
     function logOut() {
         localStorage.removeItem('userSesion')
+        setBoxIsOpen(false)
         navigate('/login')
     }
 
@@ -74,6 +79,11 @@ function GlobalProvider({children}) {
     function upDatePasswordModal() {
         setUpDatePassword(true)
         setBoxIsOpen(false)
+    }
+    function goHome() {
+        setChangePasswordErrorServer(false)
+        setUpDatePassword(false)
+        
     }
 
     
@@ -85,6 +95,7 @@ function GlobalProvider({children}) {
           .then((res) => res.json())
           .then((data) => {setCountries(data)})
       },[]) 
+
 
       
 
@@ -134,6 +145,15 @@ function GlobalProvider({children}) {
             upDatePasswordModal,
             upDatePassword,
             setUpDatePassword,
+            upDateChangePassword,
+            handlerChangePassword,
+            changePasswordUpDate,
+            changePassword,
+            closeChangePasswordConfirm,
+            changePasswordError,
+            closeChangePasswordTryAgain,
+            changePasswordErrorServer,
+            goHome,
         }}>
             {children}
         </GlobalContext.Provider>

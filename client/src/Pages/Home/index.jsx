@@ -7,11 +7,13 @@ import { useContext, useEffect } from "react"
 import { Modal } from "../../Components/Modal"
 import { GlobalContext } from "../../global/GlobalContext"
 import  UpDatePasswordCom  from '../../Components/UpDatePassword'
+import ModalConfirm from '../../Components/ModalConfirm'
+import ModalAlerts from '../../Components/ModalAlerts'
 
 
 function Home() {
 
-    const { upDatePassword } = useContext(GlobalContext)
+    const { upDatePassword,  changePassword, closeChangePasswordConfirm, changePasswordError, closeChangePasswordTryAgain, changePasswordErrorServer, goHome } = useContext(GlobalContext)
 
 
     const jwt = useLocalStorage()
@@ -32,6 +34,16 @@ function Home() {
             }
             <Modal>
                 {upDatePassword && <UpDatePasswordCom />}
+                
+            </Modal>
+            <Modal>
+                { changePassword && <ModalConfirm title={'Successful password change'} label={'Continue'} fn={closeChangePasswordConfirm} /> }
+            </Modal>
+            <Modal>
+                { changePasswordError && <ModalAlerts title={'Error'} text={'The data entered is not valid, please verify'} label={'Try again'} fn={closeChangePasswordTryAgain}/>}
+            </Modal>
+            <Modal>
+                { changePasswordErrorServer && <ModalAlerts title={'Our mistake'} text={'At the moment we cannot change your password, try again later'} label={'Continue'} fn={goHome} />}
             </Modal>
             
             

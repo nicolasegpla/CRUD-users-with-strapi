@@ -11,7 +11,7 @@ function Nav() {
             logOut, 
             boxIsOpen,
             openBoxAccount,
-            upDatePasswordModal, 
+            upDatePasswordModal,
         } = useContext(GlobalContext)
 
 
